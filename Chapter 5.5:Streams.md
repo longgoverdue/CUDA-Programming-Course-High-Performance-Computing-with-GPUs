@@ -10,10 +10,10 @@
 将 CUDA Stream 想象成一条条向前流动的 **时间河流**。每一条河流代表一个独立的 **命令队列 (Command Queue)**。
 
 ### 1.2 串行 vs. 并行
-*   **1️⃣ 默认流 (Default Stream / Stream 0)**
+*   **默认流 (Default Stream / Stream 0)**
     *   **机制**：如果你不指定 Stream，所有操作都在这里顺序执行。
     *   **弊端**：必须等上一步（如内存拷贝）完全结束，GPU 才能开始下一步（计算）。这会导致 GPU 在等待数据传输时处于 **空闲状态 (Idle)**。
-*   **3️⃣ 多流 (Multi-Streams)**
+*   **多流 (Multi-Streams)**
     *   **机制**：我们可以创建多个平行的河流。
     *   **优势**：Stream 1 在搬运数据时，Stream 2 可以在进行计算。
 
